@@ -35,22 +35,23 @@ print(s.getRow(3))
 # 119. Pascal's Triangle II - LeetCode
 # https://leetcode.com/problems/pascals-triangle-ii/description/
 
+#!/usr/bin/python3
+# 119. Pascal's Triangle II - LeetCode
+# https://leetcode.com/problems/pascals-triangle-ii/description/
+
 class Solution(object):
     def getRow(self, rowIndex):
         """
         :type rowIndex: int
         :rtype: List[int]
         """
-        res = [1]
-        for i in range(1,rowIndex+1):
-            j = 1
-            cur = 1
-            while j < i:
-                prev = cur
-                cur = res[j]
-                res[j] = prev + cur
-                j += 1
+        res = []
+        for i in range(rowIndex+1):
             res.append(1)
+            j = len(res) - 2
+            while j > 0:
+                res[j] = res[j] + res[j-1]
+                j -= 1
         return res
 
 pairs = [
