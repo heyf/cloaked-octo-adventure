@@ -2,7 +2,6 @@
 # https://leetcode.com/problems/symmetric-tree/description/
 
 # iteratively trial
-# TLE
 
 # Definition for a binary tree node.
 class TreeNode(object):
@@ -20,8 +19,6 @@ class Solution(object):
         next_level = [root]
         value_count = 1
         while len(next_level) > 0:
-            if value_count == 0:
-                return True
             current_level = next_level
             current_output = []
             next_level = []
@@ -33,12 +30,12 @@ class Solution(object):
                     next_level += [ i.left, i.right ]
                 else:
                     current_output.append( None )
-                    next_level += [ None, None ]
             x = 0
             while x < len(current_output):
                 if current_output[x] != current_output[len(current_output)-x-1]:
                     return False
                 x += 1
+        return True
 
 s = Solution()
 
