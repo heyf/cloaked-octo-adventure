@@ -6,8 +6,8 @@ class Solution:
             a = arr1.pop(-1) if arr1 else 0
             b = arr2.pop(-1) if arr2 else 0
             a = a + b + c
-            if a == 2:
-                result.insert(0,0) 
+            if a >= 2:
+                result.insert(0,a-2) 
                 c = -1
             elif a == -1:
                 result.insert(0,1)
@@ -28,5 +28,5 @@ s = Solution()
 # print(s.addNegabinary(arr1 = [1,1,1,1,1], arr2 = [1,0,1]))
 # print(s.addNegabinary(arr1 = [1], arr2 = [1])) # [1,1,0]
 # print(s.addNegabinary(arr1 = [1,1], arr2 = [1])) # [0] # WA2
-print(s.addNegabinary(arr1 = [1], arr2 = [1,0,1])) # [1,1,0,1,0] # WA3
+# print(s.addNegabinary(arr1 = [1], arr2 = [1,0,1])) # [1,1,0,1,0] # WA3
 print(s.addNegabinary(arr1 = [1,0,1], arr2 = [1,0,1])) # [1,1,1,1,0] # WA4
