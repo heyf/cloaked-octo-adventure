@@ -19,16 +19,15 @@ class Solution:
         for row in obstacleGrid[1:]:
             for i, v in enumerate(row):
                 if v == 0:
-                    dp[i] = 1 if i == 0 else dp[i-1] + dp[i]
+                    dp[i] = dp[i] if i == 0 else dp[i-1] + dp[i]
                 if v == 1:
                     dp[i] = 0
         return dp[-1]
 
 # @lc code=end
 s = Solution()
-ret = s.uniquePathsWithObstacles([
-  [0,0,0],
-  [0,1,0],
-  [0,0,0]
-])
+WAs = [
+    [[[1],[0]], 0]
+]
+ret = s.uniquePathsWithObstacles(WAs[0][0])
 print(ret)
