@@ -28,6 +28,8 @@ class Solution:
                 if matrix[r][c] == 0:
                     matrix[r][0] = 0
                     matrix[0][c] = 0
+        for r in range(1,nrows):
+            for c in range(1,ncols):
                 if matrix[r][0] == 0 or matrix[0][c] == 0:
                     matrix[r][c] = 0
         if row_zero:
