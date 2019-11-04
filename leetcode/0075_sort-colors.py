@@ -14,12 +14,13 @@ class Solution:
         """
         red, blue = 0, len(nums) - 1
         idx = 0
-        while idx < blue:
+        while idx <= blue:
             if nums[idx] == 0:
                 nums[idx], nums[red] = nums[red], nums[idx]
                 red += 1
             elif nums[idx] == 2:
                 nums[idx], nums[blue] = nums[blue], nums[idx]
+                idx -= 1
                 blue -= 1
             idx += 1
         return
