@@ -11,14 +11,14 @@ INT_MIN = - 2 ** 64 + 1
 
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
-        if len(nums) == 1:
-            return 0
-        nums.insert(0, INT_MIN)
-        nums.append(INT_MIN)
-        for i in range(len(nums)):
-            if nums[i+1] > nums[i] and nums[i+1] > nums[i+2]: 
-                return i
-        return -1
+        left, right = 0, len(nums) - 1
+        while left < right:
+            mid = (left + right) // 2
+            if nums[mid] > nums[mid+1]:
+                right = mid
+            else:
+                left = mid + 1
+        return right
 
 # @lc code=end
 s = Solution()
