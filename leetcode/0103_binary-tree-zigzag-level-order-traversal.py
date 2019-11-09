@@ -18,16 +18,10 @@ class Solution:
         ret = []
         child = [root]
         flag = True
-        while child:
-            if flag:
-                start, end, step = 0, len(child), 1
-            else:
-                start, end, step = len(child) - 1, -1, -1
-            flag = not flag
+        while child:            
             new_child = []
             current_layer = []
-            for idx in range(start, end, step):
-                node = child[idx]
+            for node in child:
                 if node:
                     current_layer.append(node.val)
                     if node.left:
@@ -36,7 +30,11 @@ class Solution:
                         new_child.append(node.right)
             child = new_child
             if current_layer:
-                ret.append(current_layer)
+                if flag:
+                    ret.append(current_layer)
+                else:
+                    ret.append(current_layer[::-1])
+            flag = not flag
         return ret
 
 # @lc code=end
