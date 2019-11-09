@@ -38,10 +38,8 @@ class Solution:
         return self.global_max if self.global_max else 0
 
 # @lc code=end
+from helper.tree import create_tree_by_list
+null = None
+a = create_tree_by_list([-10,9,20,null,null,15,7])
 s = Solution()
-a = TreeNode(-10)
-a.left = TreeNode(9)
-a.right = TreeNode(20)
-a.right.left = TreeNode(15)
-a.right.right = TreeNode(7)
 print(s.maxPathSum(a))
