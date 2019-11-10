@@ -37,10 +37,11 @@ class Solution:
                 return 0
             word = word_letter_list[idx]
             valid, valid_letters_left = word.check_available(letters_left)
+            sum_score = 0
             if valid:
                 sum_score = helper(idx-1, valid_letters_left) + word.score
-            else:
-                sum_score = helper(idx-1, letters_left)
+            without_sum_score = helper(idx-1, letters_left)
+            sum_score = max(sum_score, without_sum_score)
             return sum_score
 
         letters_left = [ 0 for s in score]
