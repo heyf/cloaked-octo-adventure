@@ -21,26 +21,26 @@ class Solution:
 
             @lru_cache(maxsize=None)
             def check_available(self, letters_left):
-                letters_left = list(letters_left)
+                valid_letters_left = list(letters_left)
                 for idx, count in enumerate(self.word_list):
-                    if count > letters_left[idx]:
-                        return False, 0
+                    if count > valid_letters_left[idx]:
+                        return False, letters_left
                     else:
-                        letters_left[idx] -= count
-                return True, tuple(letters_left)
+                        valid_letters_left[idx] -= count
+                return True, tuple(valid_letters_left)
         
         word_letter_list = [ Word(word) for word in words ]
 
         @lru_cache(maxsize=None)
-        def helper(end, letters_left):
-            if end < 0 or end >= len(word_letter_list):
+        def helper(idx, letters_left):
+            if idx < 0 or idx >= len(word_letter_list):
                 return 0
-            word = word_letter_list[end]
+            word = word_letter_list[idx]
             valid, valid_letters_left = word.check_available(letters_left)
             if valid:
-                sum_score = helper(end, valid_letters_left) + word.score
+                sum_score = helper(idx-1, valid_letters_left) + word.score
             else:
-                sum_score = helper(end-1, letters_left)
+                sum_score = helper(idx-1, letters_left)
             return sum_score
 
         letters_left = [ 0 for s in score]
@@ -69,10 +69,16 @@ class Solution:
 # letters = ["l","e","t","c","o","d"]
 # score = [0,0,1,1,1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0]
 
-# WA1: Expected: 51
-words = ["add","dda","bb","ba","add"]
-letters = ["a","a","a","a","b","b","b","b","c","c","c","c","c","d","d","d"]
-score = [3,9,8,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+# # WA1: Expected: 51
+# words = ["add","dda","bb","ba","add"]
+# letters = ["a","a","a","a","b","b","b","b","c","c","c","c","c","d","d","d"]
+# score = [3,9,8,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+# words[i] cannot be used two or more times
+
+# WA2: Expected: 27
+words = ["bdabd","bec","cbeb","bceb","dde"]
+letters = ["a","a","a","b","b","b","b","c","c","c","d","d","e","e"]
+score =[10,2,6,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
 s = Solution()
 ret = s.maxScoreWords(words, letters, score)
