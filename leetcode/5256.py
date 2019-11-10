@@ -20,8 +20,9 @@ class Solution:
                     col_lower[idx] = 1
                     lower -= 1
                 else:
-                    return [[],[]]
-        
+                    return []
+        if upper != 0 or lower != 0:
+            return []
         return [ col_upper, col_lower ]
 
 s = Solution()
