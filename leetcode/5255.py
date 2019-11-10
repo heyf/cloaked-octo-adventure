@@ -14,7 +14,7 @@ class Solution:
             cis[ci] += 1
         for r in range(n):
             for c in range(m):
-                if ris[r] + cis[c] % 2 == 1:
+                if (ris[r] + cis[c]) % 2 == 1:
                     count += 1
         return count
 
