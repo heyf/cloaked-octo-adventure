@@ -29,7 +29,7 @@ class Solution:
 
         # get island: DFS
         def get_island(r,c):
-            if r < 0 or c < 0 or r >= n_rols or c >= n_rols or grid[r][c] == 1:
+            if r < 0 or c < 0 or r >= n_rols or c >= n_cols or grid[r][c] == 1:
                 return
             else:
                 grid[r][c] = 1
@@ -57,14 +57,15 @@ s = Solution()
 #     [1,0,0,0,0,0,1],
 #     [1,1,1,1,1,1,1]
 # ]
-# WA1:
-grid = [
-    [1,1,1,1,1,1,1,0],
-    [1,0,0,0,0,1,1,0],
-    [1,0,1,0,1,1,1,0],
-    [1,0,0,0,0,1,0,1],
-    [1,1,1,1,1,1,1,0]
-] #2
+
+# # WA1: expected 2
+# grid = [
+#     [1,1,1,1,1,1,1,0],
+#     [1,0,0,0,0,1,1,0],
+#     [1,0,1,0,1,1,1,0],
+#     [1,0,0,0,0,1,0,1],
+#     [1,1,1,1,1,1,1,0]
+# ]
 
 # WA2: expected 6
 grid = [
