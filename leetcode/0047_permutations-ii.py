@@ -14,6 +14,7 @@ class Solution:
             ret = [[]]
             for i in nums:
                 new_ret = []
+                existed = set()
                 for lst in ret:
                     idx = 0
                     while idx < len(lst)+1:
@@ -21,7 +22,10 @@ class Solution:
                         while idx < len(lst) and lst[idx] == i:
                             idx += 1
                         new_lst.insert(idx, i)
-                        new_ret.append(new_lst)
+                        new_lst_tuple = tuple(new_lst)
+                        if new_lst_tuple not in existed:
+                            existed.add(new_lst_tuple)
+                            new_ret.append(new_lst)
                         idx += 1
                 ret = new_ret
         return ret
