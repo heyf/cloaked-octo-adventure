@@ -6,10 +6,13 @@
 from typing import List
 
 # @lc code=start
+from functools import lru_cache
+
 class Solution:
     def rob(self, nums: List[int]) -> int:
         if not nums:
             return 0
+        @lru_cache(maxsize=None)
         def helper(start, end):
             if end < start:
                 return 0
