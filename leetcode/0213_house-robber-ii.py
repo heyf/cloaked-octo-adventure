@@ -8,6 +8,8 @@ from typing import List
 # @lc code=start
 class Solution:
     def rob(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
         def helper(start, end):
             if end < start:
                 return 0
@@ -18,5 +20,6 @@ class Solution:
 # @lc code=end
 s = Solution()
 # ret = s.rob([2,3,2])
-ret = s.rob([1,2,3,1])
+# ret = s.rob([1,2,3,1])
+ret = s.rob([2,1,1,2]) #WA1: expected 3
 print(ret)
