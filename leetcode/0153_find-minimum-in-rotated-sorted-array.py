@@ -15,7 +15,7 @@ class Solution:
                 left = mid + 1
             else:
                 right = mid
-        return left
+        return nums[left]
 
 # @lc code=end
 s = Solution()
