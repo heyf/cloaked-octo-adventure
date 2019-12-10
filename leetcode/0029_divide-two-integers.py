@@ -21,11 +21,16 @@ class Solution:
                     p <<= 1
                 ret += p
                 m -= t
+        
+        ret = -ret if (dividend > 0) ^ (divisor > 0) else ret
         if ret > INT_MAX:
             ret = INT_MAX
-        return ret if dividend > 0 ^ divisor > 0 else -ret
+        return ret
 
 # @lc code=end
 s = Solution()
-ret = s.divide(1, 1) # WA1
+# ret = s.divide(7, -3)
+# ret = s.divide(1, 1) # WA1
+# ret = s.divide(-1,-1) # WA2
+ret = s.divide(-2**31-1, 1)
 print(ret)
