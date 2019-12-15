@@ -22,10 +22,10 @@ class LRUCache:
         return self.storage.get(key, -1)
 
     def put(self, key: int, value: int) -> None:
-        if len(self.storage) >= self.capacity and self.storage.get(key, None) is None:
+        if len(self.storage) >= self.capacity:
             del_key = self.key.pop(0)
             del(self.storage[del_key])
-        if self.storage.get(key, None) is None:
+        if self.get(key) is -1:
             self.key.append(key)
         self.storage[key] = value
 
@@ -36,9 +36,13 @@ class LRUCache:
 # @lc code=end
 null = None
 # WA1
-action = ["LRUCache","put","put","put","put","get","get"]
-inputs = [[2],[2,1],[1,1],[2,3],[4,1],[1],[2]]
-ans = [null,null,null,null,null,-1,3]
+# action = ["LRUCache","put","put","put","put","get","get"]
+# inputs = [[2],[2,1],[1,1],[2,3],[4,1],[1],[2]]
+# ans = [null,null,null,null,null,-1,3]
+# WA2
+action = ["LRUCache","get","put","get","put","put","get","get"]
+inputs = [[2],[2],[2,6],[1],[1,5],[1,2],[1],[2]]
+ans = [null,-1,null,-1,null,null,2,6]
 ret = []
 for a, i in zip(action, inputs):
     if a == "LRUCache":
