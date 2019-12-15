@@ -22,10 +22,10 @@ class LRUCache:
         return self.storage.get(key, -1)
 
     def put(self, key: int, value: int) -> None:
-        if len(self.storage) >= self.capacity:
+        if len(self.storage) >= self.capacity and self.storage.get(key) is None:
             del_key = self.key.pop(0)
             del(self.storage[del_key])
-        if self.get(key) is -1:
+        if self.get(key) == -1:
             self.key.append(key)
         self.storage[key] = value
 
