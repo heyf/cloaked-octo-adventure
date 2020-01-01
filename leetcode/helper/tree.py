@@ -4,16 +4,21 @@ class TreeNode:
         self.left = None
         self.right = None
 
-def create_tree_by_list(lst):
+def create_tree_by_list(lst, node_indexes=[]):
     # recursion ver
+    if node_indexes:
+        ret = []
     def helper(idx):
         if idx > len(lst) - 1 or lst[idx] is None:
             return None
         else:
             root = TreeNode(lst[idx])
+            ret.append(root)
             root.left = helper(idx*2+1)
             root.right = helper(idx*2+2)
         return root
+    if node_indexes:
+        return helper(0), [ret[i] for i in node_indexes]
     return helper(0)
 
 def tree_traversal(root):
