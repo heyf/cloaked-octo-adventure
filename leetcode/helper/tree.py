@@ -4,27 +4,22 @@ class TreeNode:
         self.left = None
         self.right = None
 
-def create_tree_by_list(lst, node_indexes=[]):
+def create_tree_by_list(lst):
     # recursion ver
-    if node_indexes:
-        ret = []
     def helper(idx):
         if idx > len(lst) - 1 or lst[idx] is None:
             return None
         else:
             root = TreeNode(lst[idx])
-            ret.append(root)
             root.left = helper(idx*2+1)
             root.right = helper(idx*2+2)
         return root
-    if node_indexes:
-        return helper(0), [ret[i] for i in node_indexes]
     return helper(0)
 
-def tree_traversal(root):
+def tree_traversal(root, value=True):
     ret = []
     if root:
-        ret.append(root.val)
+        ret.append(root.val if value else root)
         child = [root.left, root.right]
         while child:
             new_child = []
@@ -33,7 +28,7 @@ def tree_traversal(root):
             for node in child:
                 if node:
                     flag = True
-                    current_layer.append(node.val)
+                    current_layer.append(node.val if value else node)
                     new_child += [ node.left, node.right ]
                 else:
                     current_layer.append(None)
