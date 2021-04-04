@@ -7,19 +7,23 @@
 from typing import List
 
 '''
-DFS
+DFS+Cache
 
-Runtime: 808 ms, faster than 10.45% of Python3 online submissions for Palindrome Partitioning.
-Memory Usage: 30.5 MB, less than 33.73% of Python3 online submissions for Palindrome Partitioning.
+Runtime: 668 ms, faster than 50.33% of Python3 online submissions for Palindrome Partitioning.
+Memory Usage: 30.5 MB, less than 23.18% of Python3 online submissions for Palindrome Partitioning.
 '''
 
 # @lc code=start
+
+from functools import lru_cache
+
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         n = len(s)
         out = []
         res = []
 
+        @lru_cache(maxsize=None)
         def is_palindrome(start, end):
             while start < end:
                 if s[start] != s[end]:
